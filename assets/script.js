@@ -32,8 +32,8 @@ const dots = document.querySelector(".dots");
 	const content = document.createElement("span");
 	content.classList.add("dot")
 	dots.appendChild(content);
+	dots.firstElementChild.classList.add("dot_selected");
 	
 };
-
 
 
