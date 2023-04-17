@@ -27,5 +27,13 @@ arrowRight.addEventListener("click", function(){
 	console.log("suivant");
 });
 
+const dots = document.querySelector(".dots");
+ for(let i = 0; i < slides.length; i++){
+	const content = document.createElement("span");
+	content.innerHTML = "⚬";
+	dots.appendChild(content);
+	console.log("dot");
+};
+
 
 
