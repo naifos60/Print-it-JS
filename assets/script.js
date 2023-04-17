@@ -30,9 +30,9 @@ arrowRight.addEventListener("click", function(){
 const dots = document.querySelector(".dots");
  for(let i = 0; i < slides.length; i++){
 	const content = document.createElement("span");
-	content.innerHTML = "⚬";
+	content.classList.add("dot")
 	dots.appendChild(content);
-	console.log("dot");
+	
 };
 
 
