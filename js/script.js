@@ -16,23 +16,16 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+/********** variables *********/
 let i = 0;
+let dots = document.querySelector(".dots");	
 
-let dots = document.querySelector(".dots");
- for(let i = 0; i < slides.length; i++){
-	const content = document.createElement("span");
-	content.classList.add("dot")
-	dots.appendChild(content);
-	dots.firstElementChild.classList.add("dot_selected");
-	
-};
+const arrowRight = document.querySelector(".arrow_right"); 
+const arrowLeft = document.querySelector(".arrow_left");
 
-const arrowRight = document.querySelector(".arrow_right");
-arrowRight.addEventListener("click", function(){
-	console.log("suivant");
-		
-	
-	if(i < 3){	
+/************ function *********/
+function next(){
+	if(i < slides.length - 1){	
 		i++;
 		document.querySelector(".dot_selected").nextElementSibling.classList.add("dot_selected");
 	    document.querySelector(".dot_selected").classList.remove("dot_selected");
@@ -46,12 +39,9 @@ arrowRight.addEventListener("click", function(){
 	console.log(i);
 	document.querySelector(".banner-img").setAttribute("src", "./assets/images/slideshow/" + slides[i].image);
 	document.querySelector(".banner-img").nextElementSibling.innerHTML = slides[i].tagLine;
-});
+};
 
-const arrowLeft = document.querySelector(".arrow_left");
-arrowLeft.addEventListener("click", function(){
-	console.log("précédent");
-	
+function previous(){
 	if(i > 0){	
 		i--;
 		document.querySelector(".dot_selected").previousElementSibling.classList.add("dot_selected");
@@ -59,14 +49,31 @@ arrowLeft.addEventListener("click", function(){
 		document.querySelector(".banner-img").setAttribute("src", "./assets/images/slideshow/" + slides[i].image);
 	    document.querySelector(".banner-img").nextElementSibling.innerHTML = slides[i].tagLine;
 	}else{
-		 i = 3;
+		 i = slides.length - 1;
 		 document.querySelector(".banner-img").setAttribute("src", "./assets/images/slideshow/" + slides[i].image);
 	     document.querySelector(".banner-img").nextElementSibling.innerHTML = slides[i].tagLine;
 		 dots.lastElementChild.classList.add("dot_selected");
 		 dots.firstElementChild.classList.remove("dot_selected");
 	}
 	console.log(i);
+};
+
+for(let i = 0; i < slides.length; i++){
+	const content = document.createElement("span");
+	content.classList.add("dot")
+	dots.appendChild(content);
+	dots.firstElementChild.classList.add("dot_selected");	
+};
+
+arrowRight.addEventListener("click", function(){
+	console.log("suivant");	
+	next();
 	
+});
+
+arrowLeft.addEventListener("click", function(){
+	console.log("précédent");
+	previous();
 });
 
 
