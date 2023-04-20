@@ -47,7 +47,7 @@ function previous(){
 		img.setAttribute("src", "./assets/images/slideshow/" + slides[img.dataset.index].image); // affiche l'image ce trouvant à lindex précédent de notre tableau slides[]
 	    img.nextElementSibling.innerHTML = slides[img.dataset.index].tagLine; // affiche le texte ce trouvant à lindex précédent de notre tableau slides[]
 	}else{
-		img.dataset.index = slides.length - 1;
+		img.dataset.index = slides.length - 1; // applique la valeur du dernier index de notre tableau slide[]
 		 img.setAttribute("src", "./assets/images/slideshow/" + slides[img.dataset.index].image); // affiche l'image ce trouvant au dernier index de notre tableau slides[]
 	     img.nextElementSibling.innerHTML = slides[img.dataset.index].tagLine; // affiche le texte ce trouvant au dernier index de notre tableau slides[]
 		 dots.lastElementChild.classList.add("dot_selected"); // applique la classe selectionné au dernier bullet points
