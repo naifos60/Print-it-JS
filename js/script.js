@@ -17,7 +17,6 @@ const slides = [
 	}
 ]
 /********** variables *********/
-let i = 0;
 let dots = document.querySelector(".dots");	
 const arrowRight = document.querySelector(".arrow_right"); 
 const arrowLeft = document.querySelector(".arrow_left");
@@ -26,36 +25,34 @@ const img = document.querySelector(".banner-img");
 /************ function *********/
 function next(){
 	if(img.dataset.index < slides.length - 1){	
-		img.dataset.index++;
-		document.querySelector(".dot_selected").nextElementSibling.classList.add("dot_selected");
-	    document.querySelector(".dot_selected").classList.remove("dot_selected");
+		img.dataset.index++; // incrémente l'index
+		document.querySelector(".dot_selected").nextElementSibling.classList.add("dot_selected");// applique la classe séléctionné au bullet points suivant
+	    document.querySelector(".dot_selected").classList.remove("dot_selected"); // retire la classe séléctionné au bullet points
+		img.setAttribute("src", "./assets/images/slideshow/" + slides[img.dataset.index].image); // affiche l'image ce trouvant à lindex suivant de notre tableau slides[] 
+	    img.nextElementSibling.innerHTML = slides[img.dataset.index].tagLine; // affiche le texte ce trouvant à lindex suivant de notre tableau slides[] 
 	}else{
-		img.dataset.index = 0;
-		img.setAttribute("src", "./assets/images/slideshow/" + slides[img.dataset.index].image);
-	    img.nextElementSibling.innerHTML = slides[img.dataset.index].tagLine;
-		dots.firstElementChild.classList.add("dot_selected");
-		dots.lastElementChild.classList.remove("dot_selected");
+		img.dataset.index = 0; // applique la valeur 0 à l'index
+		img.setAttribute("src", "./assets/images/slideshow/" + slides[img.dataset.index].image); // affiche l'image ce trouvant dans lindex 0 de notre tableau slides[]
+	    img.nextElementSibling.innerHTML = slides[img.dataset.index].tagLine; // affihe le texte ce trouvant dans l'index 0 de notre tableau slides[]
+		dots.firstElementChild.classList.add("dot_selected"); // applique la classe selectionné au premier bullet points
+		dots.lastElementChild.classList.remove("dot_selected"); // retire la classe séléctionné du dernier bullet points
 	}
-	console.log(i);
-	img.setAttribute("src", "./assets/images/slideshow/" + slides[img.dataset.index].image);
-	img.nextElementSibling.innerHTML = slides[img.dataset.index].tagLine;
 };
 
 function previous(){
 	if(img.dataset.index > 0){	
-		img.dataset.index--;
-		document.querySelector(".dot_selected").previousElementSibling.classList.add("dot_selected");
-	    document.querySelector(".dot_selected").nextElementSibling.classList.remove("dot_selected");
-		img.setAttribute("src", "./assets/images/slideshow/" + slides[img.dataset.index].image);
-	    img.nextElementSibling.innerHTML = slides[img.dataset.index].tagLine;
+		img.dataset.index--; // décrémente l'index
+		document.querySelector(".dot_selected").previousElementSibling.classList.add("dot_selected"); // applique la classe séléctionné au bullet points précédent
+	    document.querySelector(".dot_selected").nextElementSibling.classList.remove("dot_selected"); // retire la classe séléctionné au bullet points
+		img.setAttribute("src", "./assets/images/slideshow/" + slides[img.dataset.index].image); // affiche l'image ce trouvant à lindex précédent de notre tableau slides[]
+	    img.nextElementSibling.innerHTML = slides[img.dataset.index].tagLine; // affiche le texte ce trouvant à lindex précédent de notre tableau slides[]
 	}else{
 		img.dataset.index = slides.length - 1;
-		 img.setAttribute("src", "./assets/images/slideshow/" + slides[img.dataset.index].image);
-	     img.nextElementSibling.innerHTML = slides[img.dataset.index].tagLine;
-		 dots.lastElementChild.classList.add("dot_selected");
-		 dots.firstElementChild.classList.remove("dot_selected");
+		 img.setAttribute("src", "./assets/images/slideshow/" + slides[img.dataset.index].image); // affiche l'image ce trouvant au dernier index de notre tableau slides[]
+	     img.nextElementSibling.innerHTML = slides[img.dataset.index].tagLine; // affiche le texte ce trouvant au dernier index de notre tableau slides[]
+		 dots.lastElementChild.classList.add("dot_selected"); // applique la classe selectionné au dernier bullet points
+		 dots.firstElementChild.classList.remove("dot_selected"); // retire la classe séléctionné du premier bullet points
 	}
-	console.log(i);
 };
 /******** carrousel **********/
 for(let i = 0; i < slides.length; i++){
